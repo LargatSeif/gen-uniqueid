@@ -1,4 +1,4 @@
-import { Dictionary } from './interfaces';
+import { Dictionary, UniqueIdOptions } from './interfaces';
 
 export const DICTIONARIES: Record<Dictionary, string[]> = {
   NUMERIC: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
@@ -60,7 +60,7 @@ export const DICTIONARIES: Record<Dictionary, string[]> = {
   ],
 };
 
-export const DEFAULT_OPTIONS = {
+export const DEFAULT_OPTIONS:UniqueIdOptions = {
   length: 8,
   dictionary: [Dictionary.NUMERIC, Dictionary.ALPHA_UPPER],
   excludedChars: ['o', '0', 'I', '1'],

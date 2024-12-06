@@ -48,7 +48,7 @@ export function generateCharsets({
 
   // For each dictionary, filter out the excluded characters and shuffle the resulting character set
   return flatDictionaries.map((dictKey) => {
-    const baseCharset = DICTIONARIES[dictKey].filter(
+    const baseCharset = DICTIONARIES[dictKey!].filter(
       (char) => !flatExclusions.includes(char) // Remove excluded characters
     );
     return fisherYatesShuffle(baseCharset); // Shuffle the filtered charset for better randomness
@@ -66,14 +66,14 @@ export function generateUniqueId({
   const flatCharset = charsets.flat(); // Flatten the array of character sets into a single array
 
   // Ensure the charset has enough characters to generate an ID of the desired length
-  if (flatCharset.length < length) {
+  if (flatCharset.length < length!) {
     throw new Error(
       `Charset size (${flatCharset.length}) is too small to generate IDs of length ${length}`
     );
   }
 
   // Generate the ID using the improved shuffling and XOR scrambling method
-  const id = generateImprovedBalancedIdWithShuffling(length, charsets);
+  const id = generateImprovedBalancedIdWithShuffling(length!, charsets);
 
   // Apply post-process shuffle for the generated ID: This adds a final shuffle to the generated ID for added randomness
   return fisherYatesShuffle(id.split('')).join('');

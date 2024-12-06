@@ -5,7 +5,7 @@ export enum Dictionary {
 }
 
 export interface UniqueIdOptions {
-  length?: number;
-  dictionary?: Dictionary[] | Dictionary;
-  excludedChars?: string | string[];
+  length: number;
+  dictionary: Dictionary[] | Dictionary;
+  excludedChars: string | string[];
 }
